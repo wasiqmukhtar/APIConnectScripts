@@ -1,0 +1,25 @@
+Rest APIs used by APIConnect under the hood:
+
+List organizations in CMC  :
+Request API endpoint is : https://apiconnect.com/v1/orgs
+Authentication must be done as “cmc/<user>:<password>”
+The response is a list of all organisations on APIConnect Including communities. 
+To find only the Providers you need to use :
+If response[i]["orgType"] == "apiProvider"
+Once with the organisation you must also have the org_id to use in future calls.
+
+List TLS Profiles in CMC :
+Request API endpoint is : https://apiconnect.com/v1/cloud/ssl-profiles
+The response is a list of all TLS profiles listed. They can be identified through the title field.
+Authentication must be done as “cmc/<user>:<password>”
+
+List the catalogs inside a organisation :
+Request API endpoint is : https://apiconnect.com/v1/orgs/<org_id>/environments
+The org_id can be found from the cmc rest call. This gives you a JSON with a list of all catalogs inside a organisation.
+Use the "title" field for identification and the "id" field for reference.
+
+List the spaces inside a catalog :
+Request API endpoint is : https://apiconnect.com/v1/orgs/<org_id>/environments/<catalog_id>/spaces
+The catalog_id can be found from the list_catalogs rest call. This gives you a JSON with a list of all spaces inside a catalog.
+Use the "title" field for identification and the "id" field for reference.
+
